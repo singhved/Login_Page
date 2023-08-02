@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LoginUser.cshtml";
+}
+
+<h2>Hello! @Login_Page.Models.Cookies.GetUserDetails.Name</h2>
+
+<button type="button" class="btn btn-primary" onclick="Logout()">Logout</button>
+
+<script>
+    function Logout() {
+        $.get('/Login/Logout', function (data) {
+
+            location.reload();
+        });
+    }
+</script>

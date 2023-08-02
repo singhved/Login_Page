@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <div class="card">
+                <div class="card-header" style="text-align: center;">
+                    <span>Login Page</span>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label><i class="fa fa-user"></i> User Name</label>
+                                <input type="text" class="form-control" id="UName" name="UName" />
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label><i class="fa fa-key"></i> Password</label>
+                                <input type="password" class="form-control" id="Pwd" name="Pwd" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <button type="button" id="BtnRow" style="margin-top: 10px;" class="btn btn-primary form-control" onclick="Login()">Login <i class="fa fa-arrow-circle-o-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function Login() {
+        var uid = $('#UName').val();
+        var pass = $('#Pwd').val();
+
+        $.get('/Login/Auth', { Uid: uid, Pass: pass }, function (data) {
+            if (data == "0") {
+                alert('Wrong Credentials');
+            }
+            else if (data == "-1") {
+                alert('Oops! Network Error');
+            }
+            else {
+                location.href = "/Home/Index";
+            }
+        });
+    }
+</script>
+
+
+<style>
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    input {
+        max-width: 100%;
+    }
+</style>
+
