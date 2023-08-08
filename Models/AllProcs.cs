@@ -26,7 +26,7 @@ namespace Login_Page.Models
             SqlConnection con = new SqlConnection(Getconnection);
             SqlCommand cmd = new SqlCommand("CheckUser", con);
             cmd.Parameters.AddWithValue("@uid", uid);
-            //cmd.Parameters.AddWithValue("@pwd", pwd);
+            cmd.Parameters.AddWithValue("@pwd", pwd);
             cmd.CommandType = CommandType.StoredProcedure;
             string res = "-1";
             try

@@ -49,6 +49,8 @@
         var pass = $('#Pwd').val();
 
         $.get('/Login/Auth', { Uid: uid, Pass: pass }, function (data) {
+            alert(data);
+
             if (data == "0") {
                 alert('Wrong Credentials');
             }
